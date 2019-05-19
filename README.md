@@ -12,19 +12,17 @@ Using a simple combination of curly brackets and colons, the hton.js script will
 Implementation is as simple as including the hton.js script in a script tag somewhere in your HTML file and placing your HTON into an html tag with the class="HTON".
 For example:
 
-<pre><code><html>
-    <head>
-        <title>HTON Example</title>
-        <script src="hton.js"></script>
-    </head>
-    <body class="HTON">
+<pre><code><head>
+    <title>HTON Example</title>
+    <script src="hton.js"></script>
+</head>
+<body class="HTON">
     {:class="row":
         {:class="col-xs-12": 
             {h1::Hello World!}
         }
     }
-    </body>
-</html></code></pre>
+</body></code></pre>
 
 For a more thorough description of the HTON syntax, as well as a more substantial example, view the sample.html file in both the browser and a text editor.
 
