@@ -12,8 +12,7 @@ Using a simple combination of curly brackets and colons, the hton.js script will
 Implementation is as simple as including the hton.js script in a script tag somewhere in your HTML file and placing your HTON into an html tag with the class="HTON".
 For example:
 
-<pre><code><!DOCTYPE html>
-<html lang="en">
+<pre><code><html>
     <head>
         <title>HTON Example</title>
         <script src="hton.js"></script>
