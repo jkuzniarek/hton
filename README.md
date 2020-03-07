@@ -1,7 +1,7 @@
 # hton
-## Disclaimer: this project is a work in progress
+**Disclaimer: this project is a work in progress**
 
-**HyperText Object Notation (HTON)**
+## HyperText Object Notation (HTON)
 
 This project was born out of my frustration with how unnecessarily verbose HTML is. 
 In almost all use cases HTML is nested in the same non-overlapping way that JSON is. 
@@ -11,7 +11,7 @@ Using a simpler combination of angle and square brackets, the hton.js script wil
 HTON is a subset of EON, an Executable Object Notation that I have been designing, but not yet built a parser for.
 Consequently, this project will be a stepping stone in the development of that project. 
 
-HTON:
+**HTON:**
 <pre><code><div class: "row"
     <div class: "col-xs-12" [
         <h1 "Hello World!">
