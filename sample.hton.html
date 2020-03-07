@@ -1,0 +1,46 @@
+<html lang: "en" [
+  <head [
+    <link rel: "stylesheet" href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src: "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+    <script src: "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
+  ]>
+  <body [
+    <div class: "container" [
+      <div class: "jumbotron bg-success" [ <h3 class: "text-primary" "HTON"> ]>
+      <div class: "well" [
+        <h4 "Description">
+        <p [
+          <strong "This">
+          " page is encoded in HyperText Object Notation (HTON).<br>
+          Each object is converted into the HTML tag specified, by the hton.js script at the end of this file.<br>
+        ]>
+        <p [
+          "Each HyperText Object has "
+          <strong "three">
+          " sections which correlate to the parts of an HTML tag:"
+          <ul [
+            <li "The first section is the tag type.">
+            <li "The second is the tag head where the tag's attributes are enumerated.">
+            <li "The last section is the tag body where the tag's contents and children are enclosed. The tag body is enclosed in square brackets [] because it is a list of tags and Strings">
+          ]>
+          
+          "These three sections are separated by whitespace.<br>
+          Since there is no such thing as an HTML tag without a type, the type section is required.<br>
+          However, the head and body sections are optional."
+        ]>
+        <h4 "Notes">
+        <ul [
+          <li "Any text on the page must be contained in a string, otherwise it will be treated as an HTON object.">
+          <li [
+            "If desired, raw HTML can be directly included in a string without being altered. This is also the recommended method of using standalone tags like " 
+            <pre "<br>">
+          ]>
+          <li "All HTON Objects will receive a closing tag that matches the opening tag.">
+        ]>
+        <h4 "Implementation">
+        <p "The hton.js script should be included as the very last thing on the page so it does not run until the window has finished loading.">
+      ]>
+    ]>
+  ]>
+]>
+<script src="hton.js"></script> <!-- the hton.js script can be included almost anywhere in the HTML since it only executes once the window has loaded -->
