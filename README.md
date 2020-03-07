@@ -1,5 +1,5 @@
 # hton
-##Disclaimer: this project is a work in progress
+## Disclaimer: this project is a work in progress
 
 **HyperText Object Notation (HTON)**
 
@@ -12,12 +12,12 @@ HTON is a subset of EON, an Executable Object Notation that I have been designin
 Consequently, this project will be a stepping stone in the development of that project. 
 
 HTON:
-`<div class: "row"
+<pre><code><div class: "row"
     <div class: "col-xs-12" [
         <h1 "Hello World!">
         <p "Hello Sam!">
     ]>
->`
+></code></pre>
 
 ## Implementation
 Implementation is as simple as including the hton.js script in a script tag at the end of your HTML file.
