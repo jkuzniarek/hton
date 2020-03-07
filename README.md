@@ -12,11 +12,12 @@ HTON is a subset of EON, an Executable Object Notation that I have been designin
 Consequently, this project will be a stepping stone in the development of that project. 
 
 **HTON:**
-```<div class: "row"
-    <div class: "col-xs-12" [
-        <h1 "Hello World!">
-        <p "Hello Sam!">
-    ]>
+```
+<div class: "row"
+  <div class: "col-xs-12" [
+    <h1 "Hello World!">
+    <p "Hello Sam!">
+  ]>
 >
 ```
 
