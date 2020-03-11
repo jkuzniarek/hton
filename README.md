@@ -4,19 +4,23 @@
 ## HyperText Object Notation (HTON)
 
 This project was born out of my frustration with how unnecessarily verbose HTML is. 
-In almost all use cases HTML is nested in the same non-overlapping way that JSON is. 
+In almost all use cases HTML is nested in a non-overlapping manner similar to JSON. 
 So why not eliminate the redundant and unnecessary end tags and replace them with something much cleaner and more concise?
 Using a simpler combination of angle and square brackets, the hton.js script will convert HTON into HTML for the browser.
 
-HTON is a subset of EON, an Executable Object Notation that I have been designing, but not yet built a parser for.
+HTON is a subset of EON, an Extendable Object Notation that I have been designing, but not yet built a parser for.
 Consequently, this project will be a stepping stone in the development of that project. 
 
 **HTON:**
 ```
-<div class: "row"
-  <div class: "col-xs-12" [
+<html lang: "en"
+  <head <title "Hello">>
+  <body [
     <h1 "Hello World!">
-    <p "Hello Sam!">
+    <p [
+      "Hello "
+      <em "Sam!">
+      ]>
   ]>
 >
 ```
