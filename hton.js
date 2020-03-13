@@ -36,28 +36,29 @@ function lex(src){
   
   function lexString(sChar){
     endI = src.indexOf(sChar, i+1)
-    if(endI == -1){
-      lexeme += src.slice(i+1)
-      lexemes.push(lexeme)
-      lexeme = ''
+    if(endI == -1){ // end of src
+      token += src.slice(i, src_len)
+      tokens.push(token)
+      token = ''
       i = src_len
     }
-    else if(src[endI+1] == sChar){
-      lexeme += src.slice(i+1, endI+1)
-      i = endI+1
-      lexString(sChar)
-    }
+    // handle 'string''s like this'
+    // else if(src[endI+1] == sChar){
+    //   token += src.slice(i, endI+2)
+    //   i = endI+2
+    //   lexString(sChar)
+    // }
     else{
-      lexeme += src.slice(i+1, endI)
-      lexemes.push(lexeme)
-      lexeme = ''
-      i = endI+1
+      token += src.slice(i, endI+1)
+      tokens.push(token)
+      token = ''
+      i = endI+2
     }
     endI = null
   }
 
-  let lexemes = []
-  let lexeme = ''
+  let tokens = []
+  let token = ''
   let endI
 
   const src_len = src.length
@@ -68,9 +69,19 @@ function lex(src){
 
       // whitespace
       case ' ': case '\n': case '\t': case '\r':
-        if(lexeme != ''){
-          lexemes.push(lexeme)
-          lexeme = ''
+        if(src[i] === '\n'){
+          if(token != ''){
+            tokens.push(token)
+            token = ''
+          }
+          tokens.push('\n')
+        }
+        else{
+          if(token != ''){
+            tokens.push(token)
+            token = ''
+          }
+          tokens.push(' ')
         }
         i++
         break
@@ -80,10 +91,10 @@ function lex(src){
         if(src[i+1] == '/'){
           endI = src.indexOf('\n', i)
           if(endI == -1){
-            lexemes.push(src.slice(i))
+            tokens.push(src.slice(i))
             i = src_len
           }else{
-            lexemes.push(src.slice(i, endI))
+            tokens.push(src.slice(i, endI))
             i = endI
           }
           endI = null
@@ -92,10 +103,10 @@ function lex(src){
         if(src[i+1] == '*'){
           endI = src.indexOf('*/', i+2)
           if(endI == -1){
-            lexemes.push(src.slice(i))
+            tokens.push(src.slice(i))
             i = src_len
           }else{
-            lexemes.push(src.slice(i, endI+2))
+            tokens.push(src.slice(i, endI+2))
             i = endI+2
           }
           endI = null
@@ -104,45 +115,39 @@ function lex(src){
     
       // string
       case '"':
-        endI = ''
         lexString('"')
-        endI = null
         break
       
       case "'":
-        endI = ''
         lexString("'")
-        endI = null
         break
         
       case '`':
-        endI = ''
         lexString('`')
-        endI = null
         break
         
       case '<':
-        lexemes.push('<')
+        tokens.push('<')
         i++
         break
         
       case '>':
-        lexemes.push('>')
+        tokens.push('>')
         i++
         break
         
       case '[':
-        lexemes.push('[')
+        tokens.push('[')
         i++
         break
         
       case ']':
-        lexemes.push(']')
+        tokens.push(']')
         i++
         break
         
       case ':':
-        lexemes.push(':')
+        tokens.push(':')
         i++
         break
 
@@ -162,17 +167,17 @@ function lex(src){
               endI = indices[index]
             }
           }
-          lexeme += src.slice(i, endI)
-          for(var c of lexeme){
+          token += src.slice(i, endI)
+          for(var c of token){
             if(!isAttrChar(c)){
-              console.log("Unexpected character: '"+src[i]+"' @ index: "+i+", in: <"+lexeme)
+              console.log("Unexpected character: '"+src[i]+"' @ index: "+i+", in: <"+token)
               i = src_len
               break
             }
           }
           if(i !== src_len){
-            lexemes.push(lexeme)
-            lexeme = ''
+            tokens.push(token)
+            token = ''
             i = endI
           }
           endI = null
@@ -194,17 +199,17 @@ function lex(src){
               endI = indices[index]
             }
           }
-          lexeme += src.slice(i, endI)
-          for(var c of lexeme){
+          token += src.slice(i, endI)
+          for(var c of token){
             if(!isAttrChar(c)){
-              console.log("Unexpected character: '"+src[i]+"' @ index: "+i+", in: <"+lexeme)
+              console.log("Unexpected character: '"+src[i]+"' @ index: "+i+", in: <"+token)
               i = src_len
               break
             }
           }
           if(i !== src_len){
-            lexemes.push(lexeme)
-            lexeme = ''
+            tokens.push(token)
+            token = ''
             i = endI
           }
           endI = null
@@ -213,9 +218,9 @@ function lex(src){
 
       // END SWITCH CASES
     } // END SWITCH
-    // alert(lexemes)
+    // alert(tokens)
   } // END WHILE
-  return lexemes;
+  return tokens;
 }
 
 
